@@ -39,7 +39,30 @@ public class Impresora {
 	@Override
 	public String toString() {
 		
-		return codi_impresora + "\t" + nom_assignat + "\t" + estat + "\t" + marca + "\t" + model + "\t" + bobina_carregada;
+
+		String espai1 = "";
+		if (getNom_assignat().length()<=20){
+			int length = 22-getNom_assignat().length();
+			for(int i=0; i<length;i++){
+				espai1 = espai1 + " ";
+			}
+		}
+		String espai3 = "";
+		if (getMarca().length()<=18){
+			int length = 20-getMarca().length();
+			for(int i=0; i<length;i++){
+				espai3 = espai3 + " ";
+			}
+		}
+		String espai4 = "";
+		if (getModel().length()<=14){
+			int length = 16-getModel().length();
+			for(int i=0; i<length;i++){
+				espai4 = espai4 + " ";
+			}
+		}
+		return codi_impresora + "\t" + nom_assignat + espai1 + estat + "\t" + marca + espai3 + model + espai4 + bobina_carregada;
+		
 	}
 	
 

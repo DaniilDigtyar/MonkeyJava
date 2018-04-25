@@ -35,6 +35,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class AM3D extends JFrame{
 
@@ -43,6 +45,7 @@ public class AM3D extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
+	
 	ArrayList<Treballdor> LlistaTreballadors = new ArrayList();
 	ArrayList<Impresora> LlistaImpresores= new ArrayList();
 	/**
@@ -74,7 +77,7 @@ public class AM3D extends JFrame{
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 820, 548);
+		frame.setBounds(100, 100, 837, 529);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		/**
 		 * Barra de menu
@@ -90,6 +93,8 @@ public class AM3D extends JFrame{
 		 * textArea per Treballadors
 		 */
 		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
+		textArea.setFont(new Font("Consolas", Font.PLAIN, 12));
 		textArea.setLineWrap(true);
 		textArea.setBounds(25, 119, 769, 330);
 		frame.getContentPane().add(textArea);
@@ -99,10 +104,56 @@ public class AM3D extends JFrame{
 		 */
 		
 		JTextArea textArea_1 = new JTextArea();
+		textArea_1.setEditable(false);
+		textArea_1.setFont(new Font("Consolas", Font.PLAIN, 12));
 		textArea_1.setBounds(25, 119, 769, 330);
 		textArea.setLineWrap(true);
 		frame.getContentPane().add(textArea_1);
 		
+		JLabel lblNumeroDeMaquines = new JLabel("Numero de maquines:");
+		lblNumeroDeMaquines.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblNumeroDeMaquines.setBounds(385, 3, 136, 14);
+		frame.getContentPane().add(lblNumeroDeMaquines);
+		
+		JLabel lblNumMaquines = new JLabel("");
+		lblNumMaquines.setBounds(523, 3, 46, 14);
+		frame.getContentPane().add(lblNumMaquines);
+		
+		JLabel lblMconnectades = new JLabel("Maquines connectades:");
+		lblMconnectades.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMconnectades.setBounds(385, 19, 136, 14);
+		frame.getContentPane().add(lblMconnectades);
+		
+		JLabel lblMaquinesConnectades = new JLabel("");
+		lblMaquinesConnectades.setBounds(523, 19, 46, 14);
+		frame.getContentPane().add(lblMaquinesConnectades);
+		
+		JLabel lblMAmbError = new JLabel("Maquines amb error:");
+		lblMAmbError.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMAmbError.setBounds(385, 35, 136, 14);
+		frame.getContentPane().add(lblMAmbError);
+		
+		JLabel lblMaquinesAmbError = new JLabel("");
+		lblMaquinesAmbError.setBounds(523, 35, 46, 14);
+		frame.getContentPane().add(lblMaquinesAmbError);
+		
+		JLabel lblMImprimint = new JLabel("Maquines imprimint:");
+		lblMImprimint.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMImprimint.setBounds(385, 51, 136, 14);
+		frame.getContentPane().add(lblMImprimint);
+				
+		JLabel lblMaquinesImprimint = new JLabel("");
+		lblMaquinesImprimint.setBounds(523, 51, 46, 14);
+		frame.getContentPane().add(lblMaquinesImprimint);
+		
+		JLabel lblMFinalitzdes = new JLabel("Maquines finalitzdes:");
+		lblMFinalitzdes.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMFinalitzdes.setBounds(385, 67, 136, 14);
+		frame.getContentPane().add(lblMFinalitzdes);
+	
+		JLabel lblMaquinesFinalitzdes = new JLabel("");
+		lblMaquinesFinalitzdes.setBounds(523, 67, 46, 14);
+		frame.getContentPane().add(lblMaquinesFinalitzdes);
 		
 		
 		JButton btnOrdenarPerNomTreballador = new JButton("Ordenar per nom");
@@ -192,6 +243,18 @@ public class AM3D extends JFrame{
 		panel.setBounds(25, 92, 769, 29);
 		frame.getContentPane().add(panel);
 		
+		
+		lblNumeroDeMaquines.show(false);
+		lblMconnectades.show(false);
+		lblMAmbError.show(false);
+		lblMImprimint.show(false);
+		lblMFinalitzdes.show(false);
+		lblMaquinesConnectades.show(false);
+		lblMaquinesAmbError.show(false);
+		lblMaquinesImprimint.show(false);
+		lblMaquinesFinalitzdes.show(false);
+		lblNumMaquines.show(false);
+		
 		textArea.show(false);
 		textArea_1.show(false);
 		btnOrdenarPerNomTreballador.show(false);
@@ -209,6 +272,18 @@ public class AM3D extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				LlistaImpresores.clear();
+				
+				lblNumeroDeMaquines.show(true);
+				lblMconnectades.show(true);
+				lblMAmbError.show(true);
+				lblMImprimint.show(true);
+				lblMFinalitzdes.show(true);
+				lblMaquinesConnectades.show(true);
+				lblMaquinesAmbError.show(true);
+				lblMaquinesImprimint.show(true);
+				lblMaquinesFinalitzdes.show(true);
+				lblNumMaquines.show(true);
+				
 				lblNewLabel.show(false);
 				lblNewLabel_1.show(true);
 				btnOrdenarPerNomImpresora.show(true);
@@ -217,7 +292,7 @@ public class AM3D extends JFrame{
 				textArea.show(false);
 				textArea_1.show(true);
 				panel.show(true);
-				
+							
 				File ficher;
 				String linia;
 				String contingut="";
@@ -228,12 +303,18 @@ public class AM3D extends JFrame{
 				try {
 					FileReader fr = new FileReader(ficher);
 					BufferedReader br = new BufferedReader(fr);
+					int NumImpresores=0;
 					while((linia=br.readLine())!=null){
+						
+						
 						List <String> l=Arrays.asList(linia.split("\\|"));
 						
 						Impresora p = new Impresora(l.get(0),l.get(1),l.get(2),l.get(3),l.get(4),l.get(5));
 						System.out.println(p);
+						
 						LlistaImpresores.add(p);
+						NumImpresores=NumImpresores+1;
+						lblNumMaquines.setText(Integer.toString(NumImpresores));
 						
 					}
 					fr.close();
@@ -251,6 +332,38 @@ public class AM3D extends JFrame{
 				}finally{
 					textArea_1.setText("");
 					textArea_1.setText(contingut);
+					textArea_1.setText(contingut);
+					
+					//lblMaquinesConnectades
+					Iterator<Impresora> itr;
+					itr = LlistaImpresores.iterator();
+					int finished=0;
+					int printing=0;
+					int error=0;
+					int connected=0;
+					
+					while (itr.hasNext()){
+						String stat = itr.next().getEstat();
+						if(stat.endsWith("CONNECTED")){
+							connected = connected +1;
+						}
+						if(stat.endsWith("ERROR")){
+							error = error + 1;
+						}
+						if(stat.endsWith("PRINTING")){
+							printing = printing + 1;
+						}
+						if(stat.endsWith("FINISHED")){
+							finished = finished + 1;
+						}
+					}
+					lblMaquinesConnectades.setText(Integer.toString(connected));
+					lblMaquinesAmbError.setText(Integer.toString(error));
+					lblMaquinesImprimint.setText(Integer.toString(printing));
+					lblMaquinesFinalitzdes.setText(Integer.toString(finished));
+					
+					
+					
 				}			
 			}
 			
@@ -266,6 +379,17 @@ public class AM3D extends JFrame{
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				LlistaTreballadors.clear();
+				lblNumeroDeMaquines.show(false);
+				lblMconnectades.show(false);
+				lblMAmbError.show(false);
+				lblMImprimint.show(false);
+				lblMFinalitzdes.show(false);
+				lblMaquinesConnectades.show(false);
+				lblMaquinesAmbError.show(false);
+				lblMaquinesImprimint.show(false);
+				lblMaquinesFinalitzdes.show(false);
+				lblNumMaquines.show(false);
+				
 				lblNewLabel.show(true);
 				lblNewLabel_1.show(false);
 				btnOrdenarPerNomImpresora.show(false);
@@ -329,6 +453,18 @@ public class AM3D extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				lblNumeroDeMaquines.show(false);
+				lblMconnectades.show(false);
+				lblMAmbError.show(false);
+				lblMImprimint.show(false);
+				lblMFinalitzdes.show(false);
+				lblMaquinesConnectades.show(false);
+				lblMaquinesAmbError.show(false);
+				lblMaquinesImprimint.show(false);
+				lblMaquinesFinalitzdes.show(false);
+				lblNumMaquines.show(false);
+				
 				textArea.show(true);
 				textArea_1.show(false);
 				btnOrdenarPerNomTreballador.show(true);
@@ -350,6 +486,17 @@ public class AM3D extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				lblNumeroDeMaquines.show(true);
+				lblMconnectades.show(true);
+				lblMAmbError.show(true);
+				lblMImprimint.show(true);
+				lblMFinalitzdes.show(true);
+				lblMaquinesConnectades.show(true);
+				lblMaquinesAmbError.show(true);
+				lblMaquinesImprimint.show(true);
+				lblMaquinesFinalitzdes.show(true);
+				lblNumMaquines.show(true);
+				
 				textArea.show(false);
 				textArea_1.show(true);
 				btnOrdenarPerNomTreballador.show(false);
