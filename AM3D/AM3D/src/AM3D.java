@@ -329,7 +329,7 @@ public class AM3D extends JFrame{
 					
 				} catch (IOException o) {
 					// TODO Auto-generated catch block
-					System.out.println("kek");
+					
 					o.printStackTrace();
 				}finally{
 					textArea_1.setText("");

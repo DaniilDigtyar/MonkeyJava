@@ -1,0 +1,12 @@
+
+public class CompareMarca implements java.util.Comparator<Client>{
+
+
+	@Override
+	public int compare(Client arg0, Client arg1) {
+		int ret=0;
+		ret=arg0.getMarca().compareTo(arg1.getMarca());
+	    return ret;
+	}
+
+}

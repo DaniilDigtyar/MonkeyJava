@@ -1,0 +1,39 @@
+
+public class Client {
+
+	private String dni;
+	private String nom;
+	private String cognom;
+	private Vehicle vehicle;
+	
+	public Client(String dni,String nom,String cognom, Vehicle vehicle){
+		super();
+		this.dni = dni;
+		this.nom = nom;
+		this.cognom = cognom;
+		this.vehicle = vehicle;
+	}
+
+	public String getDni() {return dni;}
+	public void setDni(String dni) {this.dni = dni;}
+
+	public String getNom() {return nom;}
+	public void setNom(String nom) {this.nom = nom;}
+
+	public String getCognom() {return cognom;}
+	public void setCognom(String cognom) {this.cognom = cognom;}
+
+	public Vehicle getVehicle() {return vehicle;}
+	public void setVehicle(Vehicle vehicle) {this.vehicle = vehicle;}
+
+	
+	@Override
+	public String toString() {
+		return dni + " " + nom + " " + cognom + " " + vehicle;
+	}
+	
+	
+	
+	
+	
+}
