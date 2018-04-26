@@ -1,0 +1,25 @@
+import java.util.Comparator;
+
+public class CompareEstatImpresores implements Comparator<Impresora> {
+	int cont=0;
+	@Override	
+	
+	public int compare(Impresora o1, Impresora o2) {
+	
+		
+		int ret=0;
+	    if (cont==0){
+	    	ret=o1.getEstat().compareTo(o2.getEstat());
+	    	cont=1;
+	    	return ret;
+	    	
+	    }
+	    if (cont==1){
+	    	ret=o2.getEstat().compareTo(o1.getEstat());
+	    	cont=0;
+	    	return ret;
+	    }
+		return ret;
+	}
+
+}
