@@ -102,6 +102,7 @@ public class AM3D extends JFrame{
 		/**
 		 * textArea per Impresores
 		 */
+		
 		JTextArea textArea_1 = new JTextArea();
 		textArea_1.setEditable(false);
 		textArea_1.setFont(new Font("Consolas", Font.PLAIN, 12));
@@ -109,90 +110,58 @@ public class AM3D extends JFrame{
 		textArea.setLineWrap(true);
 		frame.getContentPane().add(textArea_1);
 		
-		/**
-		 * label "Numero de maquines"
-		 */
 		JLabel lblNumeroDeMaquines = new JLabel("Numero de maquines:");
 		lblNumeroDeMaquines.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNumeroDeMaquines.setBounds(385, 3, 136, 14);
 		frame.getContentPane().add(lblNumeroDeMaquines);
 		
-		/**
-		 * label Resultat Num de maquines
-		 */
 		JLabel lblNumMaquines = new JLabel("");
 		lblNumMaquines.setBounds(523, 3, 46, 14);
 		frame.getContentPane().add(lblNumMaquines);
 		
-		/**
-		 * label "Maquines connectades"
-		 */
 		JLabel lblMconnectades = new JLabel("Maquines connectades:");
 		lblMconnectades.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMconnectades.setBounds(385, 19, 136, 14);
 		frame.getContentPane().add(lblMconnectades);
 		
-		/**
-		 * label Resultat Num de maquines connectades
-		 */
 		JLabel lblMaquinesConnectades = new JLabel("");
 		lblMaquinesConnectades.setBounds(523, 19, 46, 14);
 		frame.getContentPane().add(lblMaquinesConnectades);
 		
-		/**
-		 * label "Maquines amb error"
-		 */
 		JLabel lblMAmbError = new JLabel("Maquines amb error:");
 		lblMAmbError.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMAmbError.setBounds(385, 35, 136, 14);
 		frame.getContentPane().add(lblMAmbError);
-			
-		/**
-		 * label Resultat Maquines amb error
-		 */
+		
 		JLabel lblMaquinesAmbError = new JLabel("");
 		lblMaquinesAmbError.setBounds(523, 35, 46, 14);
 		frame.getContentPane().add(lblMaquinesAmbError);
 		
-		/**
-		 * label "Maquines imprimint"
-		 */
 		JLabel lblMImprimint = new JLabel("Maquines imprimint:");
 		lblMImprimint.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMImprimint.setBounds(385, 51, 136, 14);
 		frame.getContentPane().add(lblMImprimint);
-			
-		/**
-		 * label Resultat Maquines imprimint
-		 */
+				
 		JLabel lblMaquinesImprimint = new JLabel("");
 		lblMaquinesImprimint.setBounds(523, 51, 46, 14);
 		frame.getContentPane().add(lblMaquinesImprimint);
 		
-		/**
-		 * label "Maquines finalitzades"
-		 */
 		JLabel lblMFinalitzdes = new JLabel("Maquines finalitzdes:");
 		lblMFinalitzdes.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblMFinalitzdes.setBounds(385, 67, 136, 14);
 		frame.getContentPane().add(lblMFinalitzdes);
-		
-		/**
-		 * label Resultat Maquines finalitzades
-		 */
+	
 		JLabel lblMaquinesFinalitzdes = new JLabel("");
 		lblMaquinesFinalitzdes.setBounds(523, 67, 46, 14);
 		frame.getContentPane().add(lblMaquinesFinalitzdes);
 		
-		/**
-		 * button Amb la funcio de ordenar els treballadors segons el seu nom
-		 */
+		
 		JButton btnOrdenarPerNomTreballador = new JButton("Ordenar per nom");
 		btnOrdenarPerNomTreballador.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				// TODO Auto-generated method stub
 				String contingut="";
 				Collections.sort(LlistaTreballadors, new CompareNomTreballador());
 				textArea.setText("");
@@ -207,17 +176,18 @@ public class AM3D extends JFrame{
 			
 		});
 		btnOrdenarPerNomTreballador.setBounds(25, 52, 162, 29);
+		
+		
+		
 		frame.getContentPane().add(btnOrdenarPerNomTreballador);
 		
-		/**
-		 * button Amb la funcio de ordenar les impresores segons el seu nom
-		 */
 		JButton btnOrdenarPerNomImpresora = new JButton("Ordenar per nom");
 		btnOrdenarPerNomImpresora.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-							
+				// TODO Auto-generated method stub
+			
 				String contingut ="";
 				Collections.sort(LlistaImpresores, new CompareNomImpresores());
 				textArea_1.setText("");
@@ -228,20 +198,21 @@ public class AM3D extends JFrame{
 					contingut= contingut + itr.next() + "\n";
 				}
 				textArea_1.setText(contingut);
-			}	
+			}
+			
+			
+			
 		});
 		btnOrdenarPerNomImpresora.setBounds(25, 52, 162, 29);
 		frame.getContentPane().add(btnOrdenarPerNomImpresora);
 		
-		/**
-		 * button Amb la funcio de ordenar les impresores segons el seu estat
-		 */
 		JButton btnOrdenarPerEstat = new JButton("Ordenar per Estat");
 		btnOrdenarPerEstat.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-								
+				// TODO Auto-generated method stub
+				
 				String contingut ="";
 				Collections.sort(LlistaImpresores, new CompareEstatImpresores());
 				textArea_1.setText("");
@@ -253,36 +224,27 @@ public class AM3D extends JFrame{
 				}
 				textArea_1.setText(contingut);
 			}
+			
 		});
 		btnOrdenarPerEstat.setBounds(197, 52, 153, 29);
 		frame.getContentPane().add(btnOrdenarPerEstat);
 		
-		/**
-		 * label per veure el ordre dels treballadors
-		 */
+		
 		JLabel lblNewLabel = new JLabel("Dni | Nom | Cognom | Gcode");
 		lblNewLabel.setBackground(Color.BLACK);
 		lblNewLabel.setBounds(30, 99, 291, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
-		/**
-		 * label per veure el ordre de les impresores
-		 */
 		JLabel lblNewLabel_1 = new JLabel("Codi impresora | Nom assignat | Estat | Marca | Model | Bobina carregada");
 		lblNewLabel_1.setBounds(30, 99, 427, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		/**
-		 * label decoratiu
-		 */
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.GRAY);
 		panel.setBounds(25, 92, 769, 29);
 		frame.getContentPane().add(panel);
 		
-		/**
-		 * amaga tots el elements innesesaris abans de cargar els arxius
-		 */
+		
 		lblNumeroDeMaquines.show(false);
 		lblMconnectades.show(false);
 		lblMAmbError.show(false);
@@ -303,15 +265,13 @@ public class AM3D extends JFrame{
 		lblNewLabel_1.show(false);
 		panel.show(false);
 		
-		/**
-		 * Carrega el arxiu de impresores i el mostra linea per linea al textArea_1
-		 * Conta Conta els estats de les impresores per generar una llista amb quantes estan en cada estat
-		 */
+		
 		JMenuItem mntmCargarImpresores = new JMenuItem("Cargar Impresores");
 		mntmCargarImpresores.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
 				LlistaImpresores.clear();
 				
 				lblNumeroDeMaquines.show(true);
@@ -368,12 +328,14 @@ public class AM3D extends JFrame{
 
 					
 				} catch (IOException o) {
-										
+					// TODO Auto-generated catch block
+					
 					o.printStackTrace();
 				}finally{
 					textArea_1.setText("");
 					textArea_1.setText(contingut);
 					
+					//lblMaquinesConnectades
 					Iterator<Impresora> itr;
 					itr = LlistaImpresores.iterator();
 					int finished=0;
@@ -401,6 +363,8 @@ public class AM3D extends JFrame{
 					lblMaquinesImprimint.setText(Integer.toString(printing));
 					lblMaquinesFinalitzdes.setText(Integer.toString(finished));
 					
+					
+					
 				}			
 			}
 			
@@ -408,15 +372,13 @@ public class AM3D extends JFrame{
 		mnArxiu.add(mntmCargarImpresores);
 		
 		
-		/**
-		 * Carrega el arxiu de treballadors i el mostra linea per linea al textArea
-		 */
+		
 		JMenuItem mntmCargarTreballadors = new JMenuItem("Cargar Treballadors");
 		mntmCargarTreballadors.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				// TODO Auto-generated method stub
 				LlistaTreballadors.clear();
 				lblNumeroDeMaquines.show(false);
 				lblMconnectades.show(false);
@@ -464,7 +426,7 @@ public class AM3D extends JFrame{
 						contingut = contingut + itr.next() + "\n";
 					}		
 				} catch (IOException o) {
-					
+					// TODO Auto-generated catch block
 					o.printStackTrace();
 				}finally{
 					textArea.setText("");
@@ -475,9 +437,6 @@ public class AM3D extends JFrame{
 		});
 		mnArxiu.add(mntmCargarTreballadors);
 		
-		/**
-		 * Tanca la aplicacio
-		 */
 		JMenuItem mntmSortir = new JMenuItem("Sortir");
 		mntmSortir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -486,12 +445,10 @@ public class AM3D extends JFrame{
 		});
 		mnArxiu.add(mntmSortir);
 				
-
+				
+		
 		frame.getContentPane().setLayout(null);
 		
-		/**
-		 * Mostra els traballadors idemendentment de si abans ja se l'hi ha carregat un arxiu i el mostra amb tot el seu contingut
-		 */
 		JButton btnTreballadors = new JButton("Treballadors");
 		btnTreballadors.addActionListener(new ActionListener(){
 
@@ -524,17 +481,12 @@ public class AM3D extends JFrame{
 		btnTreballadors.setBounds(0, 0, 107, 23);
 		frame.getContentPane().add(btnTreballadors);
 		
-		
-		/**
-		 * 	Mostra les impresores idemendentment de si abans ja se l'hi ha carregat un arxiu i el mostra amb tot el seu contingut
-
-		 */
 		JButton btnImpresores = new JButton("Impresores");
 		btnImpresores.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				// TODO Auto-generated method stub
 				lblNumeroDeMaquines.show(true);
 				lblMconnectades.show(true);
 				lblMAmbError.show(true);
@@ -561,11 +513,14 @@ public class AM3D extends JFrame{
 		frame.getContentPane().add(btnImpresores);
 
 	}
+	public File saveFile(){
+		File file;
+		JFileChooser fileChooser2=new JFileChooser();
+		fileChooser2.showSaveDialog(this);
+		file=fileChooser2.getSelectedFile();
+		return file;
+	}
 	
-	/**
-	 * Obre una finestra per carregar un arxiu
-	 * @return el arxiu carregat
-	 */
 	public File openFile(){
 		JFileChooser fileChooser=new JFileChooser();
 		File file;

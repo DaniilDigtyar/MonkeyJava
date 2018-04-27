@@ -416,7 +416,7 @@ public class AM3D extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
+				// TODO Auto-generated method stub
 				LlistaTreballadors.clear();
 				lblNumeroDeMaquines.show(false);
 				lblMconnectades.show(false);
@@ -534,7 +534,7 @@ public class AM3D extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				// TODO Auto-generated method stub
 				lblNumeroDeMaquines.show(true);
 				lblMconnectades.show(true);
 				lblMAmbError.show(true);
