@@ -1,0 +1,26 @@
+
+public class Gcode {
+
+	private String nomGcode;
+	private String tipusMaterial;
+
+	public Gcode(String nomGcode, String tipusMaterial) {
+		super();
+		this.nomGcode = nomGcode;
+		this.tipusMaterial = tipusMaterial;
+	}
+
+	public String getNomGcode() {return nomGcode;}
+	public void setNomGcode(String nomGcode) {this.nomGcode = nomGcode;}
+
+	public String getTipusMaterial() {return tipusMaterial;}
+	public void setTipusMaterial(String tipusMaterial) {this.tipusMaterial = tipusMaterial;}
+
+	@Override
+	public String toString() {
+		return nomGcode + "|" + tipusMaterial;
+	}
+	
+	
+	
+}

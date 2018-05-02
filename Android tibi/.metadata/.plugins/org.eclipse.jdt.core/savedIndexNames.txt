@@ -1,0 +1,3 @@
+INDEX VERSION 1.129+D:\Users\49260131l\Documents\GitHub\MonkeyJava\Android tibi\.metadata\.plugins\org.eclipse.jdt.core
+2950079345.index
+3644857559.index

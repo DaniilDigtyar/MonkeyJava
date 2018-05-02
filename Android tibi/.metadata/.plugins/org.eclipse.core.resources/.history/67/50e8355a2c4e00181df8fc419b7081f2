@@ -1,0 +1,201 @@
+package prac;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+import java.sql.PreparedStatement;
+
+public class bddd {
+
+	private JFrame frame;
+	private JTextField textFieldMatricula;
+	private JTextField textFieldModel;
+	private JTextField textFieldKilometros;
+	private JTextField textFieldPVP;
+	PreparedStatement st;
+
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					bddd window = new bddd();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public bddd() {
+		conectar1();
+		initialize();
+	}
+	
+	
+	private Connection conectar(){
+		Connection con = null;
+		try{
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3307/uf6_pt1","root","usbw");
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		return con;
+		
+	}
+	private Connection conectar1(){
+		Connection con = null;
+		try{
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3307/uf6_pt1","root","usbw");
+		JOptionPane.showMessageDialog(null, "omegalol estas dins");
+		} catch (SQLException e){
+			e.printStackTrace();
+		}
+		return con;
+		
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+	
+		
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel lblMatricula = new JLabel("Matricula:");
+		lblMatricula.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblMatricula.setBounds(10, 29, 72, 14);
+		frame.getContentPane().add(lblMatricula);
+		
+		JLabel lblModel = new JLabel("Model:");
+		lblModel.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblModel.setBounds(10, 54, 72, 14);
+		frame.getContentPane().add(lblModel);
+		
+		JLabel lblKilometros = new JLabel("Kilometros:");
+		lblKilometros.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblKilometros.setBounds(10, 79, 72, 14);
+		frame.getContentPane().add(lblKilometros);
+		
+		JLabel lblPvp = new JLabel("PVP:");
+		lblPvp.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPvp.setBounds(10, 104, 72, 14);
+		frame.getContentPane().add(lblPvp);
+		
+		textFieldMatricula = new JTextField();
+		textFieldMatricula.setBounds(92, 26, 86, 20);
+		frame.getContentPane().add(textFieldMatricula);
+		textFieldMatricula.setColumns(10);
+		
+		textFieldModel = new JTextField();
+		textFieldModel.setBounds(92, 51, 86, 20);
+		frame.getContentPane().add(textFieldModel);
+		textFieldModel.setColumns(10);
+		
+		textFieldKilometros = new JTextField();
+		textFieldKilometros.setBounds(92, 76, 86, 20);
+		frame.getContentPane().add(textFieldKilometros);
+		textFieldKilometros.setColumns(10);
+		
+		textFieldPVP = new JTextField();
+		textFieldPVP.setBounds(92, 101, 86, 20);
+		frame.getContentPane().add(textFieldPVP);
+		textFieldPVP.setColumns(10);
+		
+		JButton btnConsultar = new JButton("Consultar");
+		btnConsultar.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				String Consulta = "SELECT * FROM cotxe WHERE matricula = ?";
+				try{
+					st = conectar().prepareStatement(Consulta);
+					String a = textFieldMatricula.getText().toString();
+					st.setString(0, a);
+					JOptionPane.showMessageDialog(null, "Axisteix");
+					int row=st.executeUpdate();
+					if(row >0){
+						JOptionPane.showMessageDialog(null, "Existeix");
+					}
+				} catch (SQLException e){
+					e.printStackTrace();
+				}
+			}
+			
+		});
+		btnConsultar.setBounds(188, 25, 89, 23);
+		frame.getContentPane().add(btnConsultar);
+		
+		JButton btnAfegir = new JButton("Afegir");
+		btnAfegir.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			
+					try {
+						
+						PreparedStatement ps=conectar().prepareStatement("insert into cotxe(matricula, model, kilometros, pvp) values(?,?,?,?)");
+						ps.setString(0, textFieldMatricula.getText().toString());
+						ps.setString(1, textFieldModel.getText().toString());
+						ps.setString(2, textFieldKilometros.getText().toString());
+						ps.setString(3, textFieldPVP.getText().toString());
+						int row=st.executeUpdate();
+						if(row>0){
+							JOptionPane.showMessageDialog(null, "k");
+						}
+						
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+			}
+			
+		});
+		btnAfegir.setBounds(10, 162, 89, 23);
+		frame.getContentPane().add(btnAfegir);
+		
+		JButton btnModificar = new JButton("Modificar");
+		btnModificar.setBounds(115, 162, 89, 23);
+		frame.getContentPane().add(btnModificar);
+		
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.setBounds(214, 162, 89, 23);
+		frame.getContentPane().add(btnEliminar);
+		
+		JButton btnSortir = new JButton("Sortir");
+		btnSortir.setBounds(317, 162, 89, 23);
+		frame.getContentPane().add(btnSortir);
+		
+	}
+	
+	
+	
+	
+}

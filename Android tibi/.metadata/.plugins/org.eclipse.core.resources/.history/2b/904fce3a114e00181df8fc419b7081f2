@@ -1,0 +1,34 @@
+
+public class Bobines {
+	private String codiBobina;
+	private String tipusMaterial;
+	private String color;
+	private String marcaProductora;
+	private float diametre;
+	
+	public Bobines(String codiBobina, String tipusMaterial, String color, String marcaProductora, float diametre) {
+		super();
+		this.codiBobina = codiBobina;
+		this.tipusMaterial = tipusMaterial;
+		this.color = color;
+		this.marcaProductora = marcaProductora;
+		this.diametre = diametre;
+	}
+
+	public String getCodiBobina() {return codiBobina;}
+	public void setCodiBobina(String codiBobina) {this.codiBobina = codiBobina;}
+
+	public String getTipusMaterial() {return tipusMaterial;}
+	public void setTipusMaterial(String tipusMaterial) {this.tipusMaterial = tipusMaterial;}
+	
+	public String getColor() {return color;}
+	public void setColor(String color) {this.color = color;}
+
+	public String getMarcaProductora() {return marcaProductora;}
+	public void setMarcaProductora(String marcaProductora) {this.marcaProductora = marcaProductora;}
+
+	public float getDiametre() {return diametre;}
+	public void setDiametre(float diametre) {this.diametre = diametre;}
+	
+	
+}
