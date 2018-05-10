@@ -25,7 +25,7 @@ public class Treballdor {
 
 	@Override
 	public String toString() {
-		return dni + "\t" +  nom + "\t" + cognoms;
+		return dni + "\t" +  nom + " " + cognoms;
 	}
 	
 	
